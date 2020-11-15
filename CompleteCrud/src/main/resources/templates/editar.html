@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Editar Antología</title>
+</head>
+<body>
+
+Insertar:
+<form action="#" th:action="@{/insertar}" th:object="${antology}" method="get">
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    
+      <label for="texto">Texto: </label>
+    <input type="text" th:field="*{texto}" id="texto">
+    
+     <label for="name">Fecha: </label>
+    <input type="date" th:field="*{fecha}" id="fecha">
+    
+    
+     <input type="submit" value="Update Anthology">   
+</form>
+
+
+
+</body>
+</html>
