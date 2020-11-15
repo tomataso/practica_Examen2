@@ -1,6 +1,7 @@
 package com.cenfotec.crud.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -22,6 +23,10 @@ public class Antology {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="anthology")
 	private Set<Article> articles;
+	
+	private String texto;
+	
+	private String fecha;
 
 	public long getId() {
 		return id;
@@ -46,6 +51,24 @@ public class Antology {
 	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
 	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
 	
 	
 }

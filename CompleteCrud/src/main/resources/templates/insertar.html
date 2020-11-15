@@ -8,10 +8,24 @@
 <body>
 Insertar:
 <form action="#" th:action="@{/insertar}" th:object="${antology}" method="post">
-    <label for="name">Name</label>
+    <label for="name">Name: </label>
     <input type="text" th:field="*{name}" id="name">
+    
+      <label for="texto">Texto: </label>
+    <input type="text" th:field="*{texto}" id="texto">
+    
+     <label for="name">Fecha: </label>
+    <input type="Date" th:field="*{fecha}" id="fecha">
+    
+    
      <input type="submit" value="Add Anthology">   
 </form>
+
+
+
+
+
+
 
 </body>
 </html>
