@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8"></meta>
+
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Editar Antología</title>
+<title>Editar AntologÃ­a</title>
 </head>
 <body>
 
-Insertar:
+
 <form action="#" th:action="@{/insertar}" th:object="${antology}" method="get">
     <label for="name">Name: </label>
     <input type="text" th:field="*{name}" id="name">

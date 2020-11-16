@@ -5,11 +5,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cenfotec.crud.domain.Antology;
 import com.cenfotec.crud.service.AntologyService;
+import com.sun.el.stream.Optional;
 
 @Controller
 public class AntologyController {
@@ -39,5 +42,36 @@ public class AntologyController {
 		model.addAttribute("anthologies",anthologyService.getAll());
 		return "listar";
 	}
+	
+	
+	
+	@GetMapping("/editar/{id}")
+	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+		Optional<Antology> antology = anthologyService.get(id);
+
+		if (antology.isPresent()) {
+			model.addAttribute("antology", antology);
+			return "editar";
+		}
+			return "index";
+	}
+	
+	@PostMapping("/editar/{id}")
+	public String updateAntology(@PathVariable("id") long id, Antology antology, BindingResult result, Model model) {
+		BindigResult result, Model model){
+			
+			if(result.hasErrors()) {
+				antology.setId(id);
+				return "editar/{id}";
+			}
+			anthologyService.save(antology);
+			model.addAttribute("anthologies", anthologyService.getAll());
+			return "listar";
+			
+		}
+		
+	}
+	
+	
 	
 }
