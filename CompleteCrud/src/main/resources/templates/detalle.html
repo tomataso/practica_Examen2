@@ -3,7 +3,7 @@
 </head>
 <body>
 	Name:<span th:text="${antologyData.name}">Titulo</span><br/>
-	Subtitulo:<span th:text="${antologyData.Subtitulo}">Titulo</span><br/>
+	Subtitulo:<span th:text="${antologyData.texto}">Titulo</span><br/>
     Articulos:
     <div th:each="entry : ${antologyData.articles}">
     	<ul>
