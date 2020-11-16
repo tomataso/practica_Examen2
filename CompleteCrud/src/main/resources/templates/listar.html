@@ -15,8 +15,9 @@
 						<span th:text="${entry.name}">Name</span>
 						<span th:text="${entry.texto}">Texto:</span>
 						<span th:text="${entry.fecha}">Fecha:</span>
-						 <!-- <a href="/editar">Editar Antología</a> -->
-						<td><a th:href="@{/editar/{id}(id=${entry.id})}">Editar</a></td>
+				
+						<td><a th:href="@{/editar/{id}(id=${entry.id})}">Update </a></td>
+						<a th:href="@{/detalle/{id}(id=${entry.id})}"> AddArticle</a><br/>
 						
 					</h4>
 				</li>

@@ -17,8 +17,8 @@ import com.cenfotec.crud.service.AntologyService;
 
 import java.util.Optional;
 import org.springframework.validation.BindingResult;
-
-
+import com.cenfotec.crud.domain.Article;
+import com.cenfotec.crud.service.ArticleService;
 
 
 
@@ -27,6 +27,9 @@ public class AntologyController {
 
 	@Autowired
 	AntologyService anthologyService;
+	
+	@Autowired
+	ArticleService articleService; 
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -78,8 +81,45 @@ public class AntologyController {
 			
 		}
 		
-	}
 	
+
+		@RequestMapping(value = "/agregarArticulo/{id}")
+		public String recoverForAddArticle(Model model, @PathVariable long id) {
+			Optional<Antology> antology = anthologyService.get(id);
+			Article newArticle = new Article();
+			if (antology.isPresent()) {
+				newArticle.setAnthology(antology.get());
+				model.addAttribute("antology", antology.get());
+				model.addAttribute("article", newArticle);
+				return "agregarArticulo";
+			}
+			return "noEncontrada";
+		}
+
+		@RequestMapping(value = "/agregarArticulo/{id}", method = RequestMethod.POST)
+		public String saveArticle(Article article, Model model, @PathVariable long id) {
+			Optional<Antology> antology = anthologyService.get(id);
+			if (antology.isPresent()) {
+				article.setAnthology(antology.get());
+				articleService.save(article);
+				return "index";
+			}
+			return "errorArticle";
+		}
+
+		
+		@RequestMapping(value="/detalle/{id}")
+		public String saveEdition(Model model, @PathVariable long id) {
+			Optional<Antology> possibleData = anthologyService.get(id);
+			if (possibleData.isPresent()) {
+				model.addAttribute("antologyData",possibleData.get());
+				return "detalle";	
+			}
+			return "noEncontrada";
+		}
+		
+		
+	}
 	
 	
 
