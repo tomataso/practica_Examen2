@@ -7,12 +7,20 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cenfotec.crud.domain.Antology;
 import com.cenfotec.crud.service.AntologyService;
-import com.sun.el.stream.Optional;
+
+
+import java.util.Optional;
+import org.springframework.validation.BindingResult;
+
+
+
+
 
 @Controller
 public class AntologyController {
@@ -58,7 +66,7 @@ public class AntologyController {
 	
 	@PostMapping("/editar/{id}")
 	public String updateAntology(@PathVariable("id") long id, Antology antology, BindingResult result, Model model) {
-		BindigResult result, Model model){
+		
 			
 			if(result.hasErrors()) {
 				antology.setId(id);
@@ -74,4 +82,4 @@ public class AntologyController {
 	
 	
 	
-}
+
